@@ -1,13 +1,16 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
+/** 
+ * @NOTE YOU SHOULD CHECK HARDHAT DOCUMENTATION FOR MORE INFORMATION ABOUT TESTING
+*/
 
 
 describe("Logic testing ", function () {
 
   let proxy, strg, logic, instance;
 
-  this.beforeAll(async function() {
+  beforeEach(async function() {
 
     const Proxy = await hre.ethers.getContractFactory("FactoryProxy");
     const Storage = await hre.ethers.getContractFactory("FactoryStorage");

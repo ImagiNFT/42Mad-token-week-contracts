@@ -15,6 +15,8 @@ async function main() {
 
   // We get the contract to deploy
   const Storage = await hre.ethers.getContractFactory("FactoryStorage");
+  
+  // the address given to the constructor is the address of the owner/artist
   const strg = await Storage.deploy("0x8B94fb5F6003656cD07A3C8f466E70D52248Ea8D");
 
   await strg.deployed();

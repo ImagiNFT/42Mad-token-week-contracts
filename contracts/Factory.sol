@@ -88,6 +88,12 @@ contract Factory is ERC1155Upgradeable, IERC2981 {
         return factory_storage.getTokenAmount(_tokenId);
     }
     /**
+    * @dev function to be able to set things on Opensea 
+    */
+    function owner() public view returns (address) {
+        return factory_admin;
+    }
+    /**
      * @dev This is the current recommended method for sending and receiving ETH
     */
     receive() external payable {}
