@@ -16,25 +16,14 @@ async function main() {
   // We get the contracts to deploy
 
   const Proxy = await hre.ethers.getContractFactory("FactoryProxy");
-  const proxy_address = "0x415C8EbF910264bb06937C2CA2B9C484209669d6";
+  const proxy_address = "0xF042c83377d389bDfB0EC3254D23224C24c04371";
   const proxy = await Proxy.attach(proxy_address);
 
-  const Storage = await hre.ethers.getContractFactory("FactoryStorage");
-  const strg_address = "0xf9Ba2750da26923355C640BB08511Ad65d1379AB";
-  const strg = await Storage.attach(strg_address);
-
   const Logic = await hre.ethers.getContractFactory("Factory");
-  const logic = await Logic.deploy()
-  await logic.deployed()
-  console.log("Logic deployed to:", logic.address);
 
-  await proxy.setLogicContract(logic.address)
-  console.log("Proxy Implementation:", logic.address);
   const instance = await Logic.attach(proxy_address)
-  await instance.initialize("https://raw.githubusercontent.com/ImagiNFT/metadata-42MadridTokenWeek/master/tokens/{id}.json", "https://42mad-token-week.vercel.app/", strg_address)
-  console.log("Initialized correctly")
-  await strg.setNewContractAdmin(instance.address)
-  console.log("Contract admin address(on strorage):", instance.address);
+  await instance.createNFT("42 Madrid Token Week | Metaverse Pass", 242, 15000)
+  console.log("NFTs created")
 }
 
 // We recommend this pattern to be able to use async/await everywhere
