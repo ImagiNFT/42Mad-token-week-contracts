@@ -16,11 +16,11 @@ async function main() {
   // We get the contracts to deploy
 
   const Proxy = await hre.ethers.getContractFactory("FactoryProxy");
-  const proxy_address = "0x415C8EbF910264bb06937C2CA2B9C484209669d6";
+  const proxy_address = "0xF042c83377d389bDfB0EC3254D23224C24c04371";
   const proxy = await Proxy.attach(proxy_address);
 
   const Storage = await hre.ethers.getContractFactory("FactoryStorage");
-  const strg_address = "0xf9Ba2750da26923355C640BB08511Ad65d1379AB";
+  const strg_address = "0x3913bDe8353D8cFBdac2b51eA6F092463329fCFe";
   const strg = await Storage.attach(strg_address);
 
   const Logic = await hre.ethers.getContractFactory("Factory");
